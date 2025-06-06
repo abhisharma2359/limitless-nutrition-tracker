@@ -103,7 +103,7 @@ async function generateNutritionLogForDate(selectedDate: string) {
     const params = new URLSearchParams({
       date: selectedDate,
       timezone: timezone,
-      limit: "10",
+      limit: "10", // Maximum allowed (default is 3, max is 10)
       includeMarkdown: "true",
       includeHeadings: "true",
     });
@@ -156,7 +156,7 @@ async function generateNutritionLogForDate(selectedDate: string) {
     await showToast({
       style: Toast.Style.Animated,
       title: `Analyzing Nutrition Data for ${dateDisplayText}...`,
-      message: "Using AI to extract food consumption and calculate nutrition.",
+      message: `Processing ${lifelogs.length} lifelog${lifelogs.length !== 1 ? "s" : ""} with AI to extract food consumption and calculate nutrition.`,
     });
 
     const fullTranscript = lifelogs
